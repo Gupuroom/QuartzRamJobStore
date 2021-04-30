@@ -1,0 +1,27 @@
+
+spring:
+  quartz:
+    wait-for-jobs-to-complete-on-shutdown: true
+    properties:
+     org:
+      quartz:
+       scheduler:
+         skipUpdateCheck: true
+       threadPool:
+         class: org.quartz.simpl.SimpleThreadPool
+         threadCount: 5
+       jobStore:
+         class: org.quartz.simpl.RAMJobStore
+       plugin:
+         shutdownhook:
+           class: org.quartz.plugins.management.ShutdownHookPlugin
+           cleanShutdown: true\
+           
+  datasource:
+    url: jdbc:mysql://localhost:3306/quartz
+    username: root
+    password: 1234
+    hikari:
+      driver-class-name: com.mysql.jdbc.Driver
+      
+
